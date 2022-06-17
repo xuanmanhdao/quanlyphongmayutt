@@ -20,7 +20,7 @@ class CreateLichMuonPhongsTable extends Migration
             $table->string('MaPhong', 20);
             $table->string('MaGiangVien', 20);
             $table->integer('Sync')->default(0);
-            $table->string('GhiChu', 100);
+            $table->string('GhiChu', 100)->nullable();
             $table->foreign('MaPhong')->references('MaPhong')->on('phong');
             $table->foreign('MaGiangVien')->references('MaGiangVien')->on('giangvien');
         });

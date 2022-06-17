@@ -18,7 +18,7 @@ class CreatePhongsTable extends Migration
             $table->string('TenPhong', 20)->nullable(false);
             $table->integer('SoMay');
             $table->boolean('TinhTrang')->default(0);
-            $table->string('GhiChu', 2000);
+            $table->string('GhiChu', 2000)->nullable();
         });
     }
 
