@@ -1,8 +1,9 @@
   <!-- Topbar Start -->
   <div class="navbar-custom">
-      {{-- <button class="button-menu-mobile open-left disable-btn">
+       <button class="button-menu-mobile open-left disable-btn">
           <i class="mdi mdi-menu"></i>
       </button>
+      {{--
       <div class="app-search dropdown d-none d-lg-inline-block">
           <form>
               <div class="input-group">
@@ -46,10 +47,10 @@
                   </div>
 
                   <!-- item-->
-                  <a href="javascript:void(0);" class="dropdown-item notify-item">
+                  {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                       <i class="mdi mdi-lifebuoy mr-1"></i>
                       <span>Trợ giúp</span>
-                  </a>
+                  </a> --}}
 
                   <a href="{{ route('doimatkhau') }}" class="dropdown-item notify-item">
                       <i class="mdi mdi-lock-reset mr-1"></i>
