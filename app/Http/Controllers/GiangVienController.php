@@ -178,6 +178,9 @@ class GiangVienController extends Controller
         // dd(response()->json([$request]));
         $giangvien->save();
         if (http_response_code() === 200) {
+            if ($request->MaGiangVien == "superadmin" && $request->Quyen === 0) {
+                return;
+            }
             TaiKhoan::where('MaGiangVien', $request->MaGiangVien)->update(['Quyen' => $request->Quyen]);;
             // dd($taiKhoan);
             return redirect()->route('giangvien.index')->with('success', 'Đã sửa thành công');
@@ -203,5 +206,4 @@ class GiangVienController extends Controller
 
         return response($arr, 200);
     }
-
 }
