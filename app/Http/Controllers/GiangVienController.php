@@ -172,15 +172,15 @@ class GiangVienController extends Controller
     public function update(UpdateGiangVienRequest $request, GiangVien $giangvien)
     {
         // dd($request);
+        if ($request->MaGiangVien == "superadmin") {
+            return redirect()->route('giangvien.index')->with('error', 'Tài khoản root không thể sửa');;
+        }
         $giangvien->fill($request->all()); // Lấy hết dữ liệu
         $giangvien->fill($request->except('_token')); // Lấy hết dữ liệu ngoại trừ thuộc tính _token
 
         // dd(response()->json([$request]));
         $giangvien->save();
         if (http_response_code() === 200) {
-            if ($request->MaGiangVien == "superadmin" && $request->Quyen === 0) {
-                return;
-            }
             TaiKhoan::where('MaGiangVien', $request->MaGiangVien)->update(['Quyen' => $request->Quyen]);;
             // dd($taiKhoan);
             return redirect()->route('giangvien.index')->with('success', 'Đã sửa thành công');
