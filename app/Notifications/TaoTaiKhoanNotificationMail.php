@@ -47,7 +47,7 @@ class TaoTaiKhoanNotificationMail extends Notification
             ->line('Đây là tài khoản đăng nhập vào ứng dụng lịch mượn phòng UTT của bạn')
             ->line('Mã giảng viên: ' . $this->giangVien->MaGiangVien)
             ->line('Mật khẩu: 123456')
-            ->action('Notification Action', url('http://localhost/quanlyphongmaythuchanhutt/public/'))
+            ->action('Notification Action', url('http://quanlyphongmayutt.herokuapp.com/'))
             ->line('Cảm ơn bạn đã sử dụng ứng dụng!');
     }
 
