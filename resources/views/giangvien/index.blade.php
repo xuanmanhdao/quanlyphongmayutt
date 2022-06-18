@@ -6,10 +6,11 @@
 @section('contentPage')
     @if (kiemTraAdmin())
         <caption>
-            <a class="btn btn-primary" href="{{ route('giangvien.create') }}">Thêm giảng viên</a>
+            <a class="btn btn-primary action-icon" href="{{ route('giangvien.create') }}"><i
+                    class="mdi mdi-account-plus text-white mr-2 mb-2"></i>Thêm giảng viên</a>
         </caption>
     @endif
-    <div class="table-responsive">
+    <div class="table-responsive mt-2">
         <table class="table table-bordered table-centered mb-0 mt-2" id="users-table">
             <thead>
                 <tr>
@@ -116,7 +117,7 @@
                             searchable: false,
                             render: function(data) {
                                 return `<a href="${data}" class="action-icon"><i
-                            class="mdi mdi-pencil text-primary"></i></a>`;
+                            class="mdi mdi-account-edit text-primary"></i></a>`;
                             }
                         },
                     @endif

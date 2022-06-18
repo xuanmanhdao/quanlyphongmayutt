@@ -34,7 +34,8 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-4">
                             <div class="text-center">
-                                <img src="{{ asset('images/file-searching.svg') }}" height="90" alt="File not found Image">
+                                <img src="{{ asset('images/file-searching.svg') }}" height="90"
+                                    alt="File not found Image">
 
                                 <h1 class="text-error mt-4">Trang trống</h1>
                                 <h4 class="text-uppercase text-danger mt-3">Page Not Found</h4>
@@ -43,7 +44,8 @@
                                     happens to the best of us. Here's a
                                     little tip that might help you get back on track.</p>
 
-                                <a class="btn btn-info mt-3" href="{{ route('phong.index') }}"><i class="mdi mdi-reply"></i> Return
+                                <a class="btn btn-info mt-3" href="{{ route('phong.index') }}"><i
+                                        class="mdi mdi-reply"></i> Return
                                     Home</a>
                             </div> <!-- end /.text-center-->
                         </div> <!-- end col-->

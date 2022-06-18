@@ -4,26 +4,27 @@
         href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/date-1.1.2/fc-4.1.0/fh-3.2.3/kt-2.7.0/r-2.3.0/rg-1.2.0/sc-2.0.6/sb-1.3.3/sl-1.4.0/datatables.min.css" />
     <style>
         /* .px200 {
-                                            width: 200px;
-                                            max-width: 200px !important;
-                                            overflow-wrap: break-word;
-                                        } */
+                                                width: 200px;
+                                                max-width: 200px !important;
+                                                overflow-wrap: break-word;
+                                            } */
 
         /* table.dataTable thead th:nth-child(5),
-                                        table.dataTable tbody td:nth-child(5) {
-                                            width: 200px !important;
-                                            max-width: 200px !important;
-                                            min-width: 200px !important;
-                                        } */
+                                            table.dataTable tbody td:nth-child(5) {
+                                                width: 200px !important;
+                                                max-width: 200px !important;
+                                                min-width: 200px !important;
+                                            } */
     </style>
 @endpush
 @section('contentPage')
     @if (kiemTraAdmin())
         <caption>
-            <a class="btn btn-primary" href="{{ route('phong.create') }}">Thêm phòng</a>
+            <a class="btn btn-primary action-icon" href="{{ route('phong.create') }}"><i
+                    class="mdi mdi-home-plus text-white mr-2 mb-2"></i>Thêm phòng</a>
         </caption>
     @endif
-    <div class="table-responsive">
+    <div class="table-responsive mt-2">
         <table class="table table-bordered table-centered mb-0 mt-2" id="users-table">
             <thead>
                 <tr>
@@ -129,7 +130,7 @@
                             searchable: false,
                             render: function(data) {
                                 return `<a href="${data}" class="action-icon"><i
-                            class="mdi mdi-pencil text-primary"></i></a>`;
+                            class="mdi mdi-home-edit text-primary"></i></a>`;
                             }
                         },
                     @endif

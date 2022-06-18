@@ -1,10 +1,9 @@
   <!-- Topbar Start -->
   <div class="navbar-custom">
-       <button class="button-menu-mobile open-left disable-btn">
+      <button class="button-menu-mobile open-left disable-btn">
           <i class="mdi mdi-menu"></i>
       </button>
-      {{--
-      <div class="app-search dropdown d-none d-lg-inline-block">
+      {{-- <div class="app-search dropdown d-none d-lg-inline-block">
           <form>
               <div class="input-group">
                   <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
@@ -19,8 +18,8 @@
       {{-- account --}}
       <ul class="list-unstyled topbar-right-menu float-right mb-0">
           <li class="dropdown notification-list">
-              <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button"
-                  aria-haspopup="false" aria-expanded="false">
+              <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#"
+                  role="button" aria-haspopup="false" aria-expanded="false">
                   <span class="account-user-avatar">
                       <img src="{{ asset('images/logoFStack.jpg') }}" alt="user-image" class="rounded-circle">
                   </span>

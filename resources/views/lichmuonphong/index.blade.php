@@ -19,19 +19,20 @@
         }
 
         /* #btnTimKiemNhieuO:hover+#TimKiemNhieuO {
-                                            display: block;
-                                        } */
+                                                    display: block;
+                                                } */
     </style>
 @endpush
 @section('contentPage')
     @if (kiemTraAdmin())
         <caption>
-            <a class="btn btn-primary" href="{{ route('lichmuonphong.create') }}">Thêm lịch mượn phòng</a>
+            <a class="btn btn-primary action-icon" href="{{ route('lichmuonphong.create') }}"><i
+                    class="mdi mdi-calendar-plus text-white mr-2 mb-2"></i>Thêm lịch mượn phòng</a>
         </caption>
     @endif
 
     <div id="btnTimKiemNhieuO" onclick="showStuff('TimKiemNhieuO');" class="float-right mb-2" tabindex="1">
-        <input type="button" value="Tìm kiếm nhiều ô" class="btn btn-primary ">
+        <input type="button" value="Tìm kiếm nhiều ô" class="btn btn-primary search-icon">
     </div>
 
 
@@ -46,14 +47,13 @@
     </div> --}}
 
 
-    <div id='TimKiemNhieuO' class="card form-group border border-dark rounded mt-4 w-50">
+    <div id='TimKiemNhieuO' class="card form-group border border-dark rounded mt-4">
         <div class="card-header">
-            <p class="text-center lead">Tìm kiếm nhiều ô.
-            <p class="text-warning">Lưu ý: Kết quả tìm kiếm sẽ ưu tiên ô nhập cuối cùng</p>
-            </p>
+            <p class="text-center lead"><b>Tìm kiếm nhiều ô</b></p>
+            <p class="text-warning"><i><b>Lưu ý: Kết quả tìm kiếm sẽ ưu tiên ô nhập cuối cùng</b></i></p>
         </div>
-        <div class="card-body">
-            <div class="form-group mt-2">
+        <div class="card-body" style="display: flex; flex-wrap: wrap;">
+            <div class="form-group mt-2" style="flex: 1 1 50%;">
                 <label class="min-width-230px" for="select-tiet-hoc-LichMuonPhong">Tìm kiếm theo số tiết: </label>
                 <select class="min-width-140px" name="" id="select-tiet-hoc-LichMuonPhong">
                     <option value="0">Tất cả tiết học</option>
@@ -64,7 +64,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group mt-2" style="flex: 1 1 50%;">
                 <label class="min-width-230px" for="select-giang-vien-LichMuonPhong">Tìm kiếm mã giảng viên: </label>
                 <select class="min-width-140px" name="" id="select-giang-vien-LichMuonPhong">
                     <option value="0">Tất cả giảng viên</option>
@@ -75,7 +75,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group mt-2" style="flex: 1 1 50%;">
                 <label class="min-width-230px" for="select-phong-LichMuonPhong">Tìm kiếm phòng: </label>
                 <select class="min-width-140px" name="" id="select-phong-LichMuonPhong">
                     <option value="0">Tất cả phòng</option>
@@ -86,13 +86,13 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-2" style="flex: 1 1 50%;">
                 <label class="min-width-230px" for="select-ngay-muon-LichMuonPhong-1">Tìm kiếm theo ngày: </label>
                 <input class="min-width-140px" id="select-ngay-muon-LichMuonPhong-1" type="date" name="date">
             </div>
 
             <!-- Predefined Date Ranges -->
-            <div class="form-group">
+            <div class="form-group mt-2" style="flex: 1 1 100%;">
                 <label>Tìm kiếm theo khoảng thời gian:</label>
                 <div id="reportrange" class="form-control" data-toggle="date-picker-range"
                     data-target-display="#selectedValue" data-cancel-class="btn-light">
@@ -223,7 +223,7 @@
                             searchable: false,
                             render: function(data) {
                                 return `<a href="${data}" class="action-icon"><i
-                            class="mdi mdi-pencil text-primary"></i></a>`;
+                            class="mdi mdi-calendar-edit text-primary"></i></a>`;
                             }
                         }, {
                             data: 'btnDestroy',
@@ -234,7 +234,7 @@
                                 return `<form action="${data}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-delete-classroom action-icon"><i class="mdi mdi-delete text-warning"></i></button>
+                        <button type="button" class="btn btn-delete-classroom action-icon"><i class="mdi mdi-calendar-remove text-danger"></i></button>
                     </form>`;
                             }
                         },

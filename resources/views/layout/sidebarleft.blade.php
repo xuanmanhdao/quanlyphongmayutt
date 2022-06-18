@@ -17,7 +17,7 @@
 
              <li class="side-nav-item">
                  <a href="{{ route('phong.index') }}" class="side-nav-link">
-                     <i class="uil-store"></i>
+                     <i class="mdi mdi-folder-home"></i>
                      <span> Quản lý phòng </span>
                      <span class="menu-arrow"></span>
                  </a>
@@ -29,30 +29,30 @@
              </li>
 
              <li class="side-nav-item">
-                <a href="{{ route('giangvien.index') }}" class="side-nav-link">
-                    <i class="uil-store"></i>
-                    <span> Quản lý tài khoản </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul class="side-nav-second-level" aria-expanded="false">
-                    <li>
-                        <a href="a{{ route('giangvien.create') }}">Thêm giảng viên</a>
-                    </li>
-                </ul>
-            </li>
+                 <a href="{{ route('giangvien.index') }}" class="side-nav-link">
+                     <i class="mdi mdi-account-badge-horizontal"></i>
+                     <span> Quản lý tài khoản </span>
+                     <span class="menu-arrow"></span>
+                 </a>
+                 <ul class="side-nav-second-level" aria-expanded="false">
+                     <li>
+                         <a href="{{ route('giangvien.create') }}">Thêm giảng viên</a>
+                     </li>
+                 </ul>
+             </li>
 
-            <li class="side-nav-item">
-                <a href="{{ route('lichmuonphong.index') }}" class="side-nav-link">
-                    <i class="uil-store"></i>
-                    <span> Quản lý lịch đăng ký </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul class="side-nav-second-level" aria-expanded="false">
-                    <li>
-                        <a href="apps-ecommerce-products.html">Giao lịch</a>
-                    </li>
-                </ul>
-            </li>
+             <li class="side-nav-item">
+                 <a href="{{ route('lichmuonphong.index') }}" class="side-nav-link">
+                     <i class="mdi mdi-calendar-month"></i>
+                     <span> Quản lý lịch đăng ký </span>
+                     <span class="menu-arrow"></span>
+                 </a>
+                 <ul class="side-nav-second-level" aria-expanded="false">
+                     <li>
+                         <a href="{{ route('lichmuonphong.create') }}">Giao lịch</a>
+                     </li>
+                 </ul>
+             </li>
 
 
          </ul>

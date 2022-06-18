@@ -35,7 +35,8 @@
             <h5 class="mt-4">Width</h5>
             <hr class="mt-1" />
             <div class="custom-control custom-switch mb-1">
-                <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked />
+                <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check"
+                    checked />
                 <label class="custom-control-label" for="fluid-check">Fluid</label>
             </div>
             <div class="custom-control custom-switch mb-1">

@@ -37,12 +37,15 @@
         @endif
         <div class="form-group">
             <label for="SoMay">Số máy</label>
-            <input name="SoMay" type="number" min="0" max="200" type="text" id="SoMay" class="form-control" value="{{ old('SoMay') }}>
+            <input name="SoMay" type="number" min="0" max="200" type="text" id="SoMay"
+                class="form-control"
+                value="{{ old('SoMay') }}>
                       @if ($errors->has('SoMay'))
-            <div class="alert alert-danger">
-                {{ $errors->first('SoMay') }}
-            </div>
-            @endif
+<div class="alert
+                alert-danger">
+            {{ $errors->first('SoMay') }}
+        </div>
+        @endif
         </div>
         <div class="form-group">
             <label for="SoMay">Ghi chú</label>
