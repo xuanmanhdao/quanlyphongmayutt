@@ -60,6 +60,13 @@ class AuthControllerAPI extends Controller
             $matKhauCu = $request->post('MatKhauCu');
             $matKhauMoi = $request->post('MatKhauMoi');
 
+            if ($maGiangVien == '' || $matKhauCu == ''  || $matKhauMoi == '') {
+                return  response()->json([
+                    'success' => false,
+                    'statusCode' => 401,
+                    'message' => 'Chưa nhập đủ dữ liệu',
+                ], 401, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
+            }
             $taiKhoan = TaiKhoan::query()
                 ->where('MaGiangVien', '=', $maGiangVien)
                 ->firstOrFail();

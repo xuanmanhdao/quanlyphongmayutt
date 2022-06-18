@@ -18,11 +18,11 @@
         if($conn->query($sqls) === true)
         {
             $trangthai = ['StatusCode' => '200','Message' => 'Update thành công'];
-            echo json_encode($trangthai);
+            return json_encode($trangthai);
         }
         else
         {
-            echo json_encode($trangthai);  
+            return json_encode($trangthai);  
         }
     }
 

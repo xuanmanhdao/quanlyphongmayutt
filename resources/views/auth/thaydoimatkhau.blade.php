@@ -27,25 +27,37 @@
                     <!-- Logo -->
                     <div class="auth-brand text-center text-lg-left">
                         <a class="logo-dark">
-                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt="" height="60"></span>
+                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt=""
+                                    height="60"></span>
                         </a>
                         <a href="index.html" class="logo-light">
-                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt="" height="60"></span>
+                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt=""
+                                    height="60"></span>
                         </a>
                     </div>
 
                     <!-- title-->
                     <br>
-                    <div class="text-center w-75 m-auto">
+                    <div class="text-center w-75 m-auto" id="BieuTuongThanhCong">
                         <div class="logout-icon m-auto">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 161.2 161.2" enable-background="new 0 0 161.2 161.2" xml:space="preserve">
-                                <path class="path" fill="none" stroke="#0acf97" stroke-miterlimit="10" d="M425.9,52.1L425.9,52.1c-2.2-2.6-6-2.6-8.3-0.1l-42.7,46.2l-14.3-16.4
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 161.2 161.2" enable-background="new 0 0 161.2 161.2" xml:space="preserve">
+                                <path class="path" fill="none" stroke="#0acf97" stroke-miterlimit="10"
+                                    d="M425.9,52.1L425.9,52.1c-2.2-2.6-6-2.6-8.3-0.1l-42.7,46.2l-14.3-16.4
                                     c-2.3-2.7-6.2-2.7-8.6-0.1c-1.9,2.1-2,5.6-0.1,7.7l17.6,20.3c0.2,0.3,0.4,0.6,0.6,0.9c1.8,2,4.4,2.5,6.6,1.4c0.7-0.3,1.4-0.8,2-1.5
-                                    c0.3-0.3,0.5-0.6,0.7-0.9l46.3-50.1C427.7,57.5,427.7,54.2,425.9,52.1z"></path>
-                                <circle class="path" fill="none" stroke="#0acf97" stroke-width="4" stroke-miterlimit="10" cx="80.6" cy="80.6" r="62.1"></circle>
-                                <polyline class="path" fill="none" stroke="#0acf97" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="113,52.8
-                                    74.1,108.4 48.2,86.4 "></polyline>
-                                <circle class="spin" fill="none" stroke="#0acf97" stroke-width="4" stroke-miterlimit="10" stroke-dasharray="12.2175,12.2175" cx="80.6" cy="80.6" r="73.9"></circle>
+                                    c0.3-0.3,0.5-0.6,0.7-0.9l46.3-50.1C427.7,57.5,427.7,54.2,425.9,52.1z">
+                                </path>
+                                <circle class="path" fill="none" stroke="#0acf97" stroke-width="4"
+                                    stroke-miterlimit="10" cx="80.6" cy="80.6" r="62.1"></circle>
+                                <polyline class="path" fill="none" stroke="#0acf97" stroke-width="6"
+                                    stroke-linecap="round" stroke-miterlimit="10"
+                                    points="113,52.8
+                                    74.1,108.4 48.2,86.4 ">
+                                </polyline>
+                                <circle class="spin" fill="none" stroke="#0acf97" stroke-width="4"
+                                    stroke-miterlimit="10" stroke-dasharray="12.2175,12.2175" cx="80.6"
+                                    cy="80.6" r="73.9"></circle>
                             </svg>
                         </div>
                     </div>
@@ -53,6 +65,21 @@
                     @if (session()->has('error'))
                         <div class="alert alert-danger">
                             {{ session()->get('error') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <style>
+                            #BieuTuongThanhCong {
+                                display: none;
+                            }
+                        </style>
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endif
                     <!-- form -->
@@ -65,8 +92,8 @@
                         </div>
                         <div class="form-group">
                             <label for="xacMinhMatKhau">Xác nhận mật khẩu mới</label>
-                            <input name="xacMinhMatKhau" class="form-control" type="password" id="xacMinhMatKhau" required=""
-                                placeholder="Nhập lại mật khẩu mới">
+                            <input name="XacMinhMatKhau" class="form-control" type="password" id="xacMinhMatKhau"
+                                required="" placeholder="Nhập lại mật khẩu mới">
                         </div>
                         <div class="form-group mb-0 text-center">
                             <button class="btn btn-primary btn-block" type="password"><i class="mdi mdi-lock-reset"></i>

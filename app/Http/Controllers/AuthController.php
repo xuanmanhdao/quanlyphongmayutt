@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\TaiKhoan;
 use Exception;
 use Illuminate\Http\Request;
@@ -101,6 +102,7 @@ class AuthController extends Controller
     public function duyetDoiMatKhau(Request $request)
     {
         try {
+
             $maGiangVien = session()->get('MaGiangVien');
             // dd($request);
             $taiKhoan = TaiKhoan::query()
@@ -123,12 +125,12 @@ class AuthController extends Controller
         return view('auth.thaydoimatkhau');
     }
 
-    public function xacNhanDoiMatKhau(Request $request)
+    public function xacNhanDoiMatKhau(ChangePasswordRequest $request)
     {
         $maGiangVien = session()->get('MaGiangVien');
         $matKhau = $request->post('MatKhau');
 
         TaiKhoan::where('MaGiangVien', '=', $maGiangVien)->update(['MatKhau' => Hash::make($matKhau)]);
-        return redirect()->route('dangnhap')->with('error', 'Đổi mật khẩu thành công! Vui lòng đăng nhập lại!');
+        return redirect()->route('dangnhap')->with('success', 'Đổi mật khẩu thành công! Vui lòng đăng nhập lại!');
     }
 }

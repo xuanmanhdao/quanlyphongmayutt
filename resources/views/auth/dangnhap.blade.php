@@ -27,10 +27,12 @@
                     <!-- Logo -->
                     <div class="auth-brand text-center text-lg-left">
                         <a class="logo-dark">
-                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt="" height="60"></span>
+                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt=""
+                                    height="60"></span>
                         </a>
                         <a href="index.html" class="logo-light">
-                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt="" height="60"></span>
+                            <span><img src="{{ asset('images/logo-utt-border.png') }}" alt=""
+                                    height="60"></span>
                         </a>
                     </div>
 
@@ -45,13 +47,19 @@
                         </div>
                         {{-- {{ session()->flush() }} --}}
                     @endif
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                        {{-- {{ session()->flush() }} --}}
+                    @endif
                     <!-- form -->
                     <form action="{{ route('duyet_dang_nhap') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="magiangvien">Mã giảng viên</label>
-                            <input name="MaGiangVien" class="form-control" type="text" id="magiangvien" required=""
-                                placeholder="Nhập mã giảng viên của bạn">
+                            <input name="MaGiangVien" class="form-control" type="text" id="magiangvien"
+                                required="" placeholder="Nhập mã giảng viên của bạn">
                         </div>
                         <div class="form-group">
                             {{-- <a href="{{ route('quenmatkhau') }}" class="text-muted float-right">
