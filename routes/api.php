@@ -49,13 +49,17 @@ Route::get('sync_muonphong_thanhcong', [App\Http\Controllers\nckh\sync_muonphong
 // })->name('testds_lichmuonphong');
 
 
-
+// Route::add('/danhsachlichmuonphong', function(){
+//     // include('forget.php');
+//     include('application/ds_lichmuonphong.php');
+// });
 
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
 
 /* Đã JWT
