@@ -41,6 +41,12 @@ Route::post('them_lichmuonphong', [App\Http\Controllers\nckh\them_lichmuonphong:
 
 Route::get('sync_muonphong_thanhcong', [App\Http\Controllers\nckh\sync_muonphong_thanhcong::class, 'sync_muonphong_thanhcong'])->name('sync_muonphong_thanhcong'); // value
 
+// test
+// Route::get('testds_lichmuonphong', function(){
+//     // $path = base_path().'/public/application/ds_lichmuonphong.php';
+//     $path = public_path().'/application/ds_lichmuonphong.php';
+//     return redirect($path);
+// })->name('testds_lichmuonphong');
 
 
 

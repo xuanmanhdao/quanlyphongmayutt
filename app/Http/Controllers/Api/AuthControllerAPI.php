@@ -46,7 +46,7 @@ class AuthControllerAPI extends Controller
             return  response()->json([
                 'success' => false,
                 'statusCode' => 400,
-                'message' => 'Đăng nhập thất bại. Tài khoản hoặc mật khẩu không đúng    ',
+                'message' => 'Đăng nhập thất bại. Tài khoản hoặc mật khẩu không đúng',
                 // 'data'=>$request,
             ], 400, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
         }

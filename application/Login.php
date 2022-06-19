@@ -1,4 +1,7 @@
 <?php
+
+// $request = Request();
+// dd($request);
 include 'connect.php';
 $trangthai = array();
 $mangTaiKhoan = array();
@@ -19,7 +22,8 @@ if ($taikhoan == '' || $pass == '') {
     echo json_encode($trangthai);
 } else {
     // $sql = "SELECT * FROM taikhoan, giangvien  WHERE giangvien.MaGiangVien = taikhoan.MaGiangVien and taikhoan.MaGiangVien = '". $taikhoan."' and taikhoan.MatKhau = '".$pass."'";
-    $sql = `SELECT * FROM taikhoan, giangvien  WHERE giangvien.MaGiangVien = taikhoan.MaGiangVien and taikhoan.MaGiangVien ="$taikhoan"`;
+    // $sql = `SELECT * FROM taikhoan, giangvien  WHERE giangvien.MaGiangVien = taikhoan.MaGiangVien and taikhoan.MaGiangVien ="$taikhoan"`;
+    $sql = "SELECT * FROM taikhoan, giangvien  WHERE giangvien.MaGiangVien = taikhoan.MaGiangVien and taikhoan.MaGiangVien ='" . $taikhoan . "'";
     $result = mysqli_query($conn, $sql);
     $each = mysqli_num_rows($result);
     if ($each > 0) {
@@ -40,12 +44,13 @@ if ($taikhoan == '' || $pass == '') {
             $verify = password_verify($pass, $row['MatKhau']);
             // Print the result depending if they match
             if ($verify) {
-                array_push($mangTaiKhoan, new TaiKhoan($row['MaGiangVien'], $row['MatKhau'], $row['Quyen'], $row['HoTen'], $row['SDT'], $row['Email']));
+                // array_push($mangTaiKhoan, new TaiKhoan($row['MaGiangVien'], $row['MatKhau'], $row['Quyen'], $row['HoTen'], $row['SDT'], $row['Email']));
+                array_push($mangTaiKhoan, ['MaGV' => $row['MaGiangVien']], ['PassWord' => $row['MatKhau']], ['Quyen' => $row['Quyen']], ['TenGV' => $row['HoTen']], ['SDT' => $row['SDT']], ['Email' => $row['Email']]);
                 $trangthai = ['StatusCode' => '200', 'Message' => 'Truy cập thành công', 'Data' => $mangTaiKhoan];
-                echo json_encode($trangthai, JSON_UNESCAPED_UNICODE);
+                echo json_encode($trangthai);
             } else {
                 $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Thông tin tài khoản sai'];
-                echo json_encode($trangthai, JSON_UNESCAPED_UNICODE);
+                echo json_encode($trangthai);
             }
             // if (!Hash::check($pass, $row['MatKhau'])) {
             //     throw new Exception("Sai mật khẩu");
@@ -53,7 +58,6 @@ if ($taikhoan == '' || $pass == '') {
         }
     } else {
         $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Mã giảng viên không tồn tại'];
-        echo json_encode($trangthai, JSON_UNESCAPED_UNICODE);
+        echo json_encode($trangthai);
     }
 }
-?>
