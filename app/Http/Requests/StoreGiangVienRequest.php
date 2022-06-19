@@ -46,8 +46,8 @@ class StoreGiangVienRequest extends FormRequest
                 'bail',
                 'required',
                 'regex:/^([0-9\s\-\+\(\)]*)$/',
-                'min:10',
-                'max:20',
+                'min:9',
+                'max:11',
             ],
             'GioiTinh' => [
                 'required'
