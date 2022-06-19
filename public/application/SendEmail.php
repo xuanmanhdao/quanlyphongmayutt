@@ -52,7 +52,9 @@ if ($taikhoan == '') {
         $mail->CharSet = "UTF-8";
         try {
             //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->SMTPDebug = 0;                      //Enable verbose debug output
+
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -94,13 +96,6 @@ if ($taikhoan == '') {
             echo json_encode($trangthai);
         }
 
-        // $msg = "Chào bạn " . $row['HoTen'] . " chúng tôi là admin của ứng dụng Quản lý lịch đặt phòng UTT \n Tài khoản là " . $row['MaGiangVien'] . " và mật khẩu là : " . $row['MatKhau'] . "";
-
-        // $msg = wordwrap($msg, 70);
-        // mail($Email, "My subject", $msg, 'From: <thongbao555@gmail.com>');
-        // echo $msg;
-        // echo $Email;
-        // echo json_encode($trangthai);
     } else {
         $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Thông tin tài khoản chưa có'];
         echo json_encode($trangthai);
