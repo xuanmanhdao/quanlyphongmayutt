@@ -39,9 +39,11 @@ class UpdateGiangVienRequest extends FormRequest
             'SDT' => [
                 'bail',
                 'required',
-                'regex:/^([0-9\s\-\+\(\)]*)$/',
-                'min:9',
-                'max:11',
+                'numeric',
+                'starts_with:0',
+                // 'min:10',
+                // 'max:10',
+                'digits:10',
             ],
             'GioiTinh' => [
                 'required'
@@ -56,7 +58,20 @@ class UpdateGiangVienRequest extends FormRequest
             'string' => ':attribute phải là kiểu chữ',
             'max' => ':attribute quá dài',
             'regex' => ':attribute không đúng định dạng',
-            'min' => ':attribute quá ngắn'
+            'min' => ':attribute quá ngắn',
+
+            'numeric'=>':attribute phải là định dạng số',
+            'starts_with'=>':attribute bắt đầu bằng số 0',
+
+            'HoTen.max'=>':attribute tối đa 50 ký tự',
+
+            'Email.email'=>':attribute không đúng định dạng',
+            'Email.max'=>':attribute tối đa 50 ký tự',
+
+            'SDT.max'=>':attribute phải là 10 ký tự 2',
+            'SDT.min'=>':attribute phải là 10 ký tự 1',
+            'SDT.digits'=>':attribute phải là 10 ký tự',
+
         ];
     }
 

@@ -45,9 +45,12 @@ class StoreGiangVienRequest extends FormRequest
             'SDT' => [
                 'bail',
                 'required',
-                'regex:/^([0-9\s\-\+\(\)]*)$/',
-                'min:9',
-                'max:11',
+                'numeric',
+                'starts_with:0',
+                // 'min:10',
+                // 'max:10',
+                'digits:10',
+                // 'regex:/^([0-9\s\-\+\(\)]*)$/',
             ],
             'GioiTinh' => [
                 'required'
@@ -60,9 +63,21 @@ class StoreGiangVienRequest extends FormRequest
             'unique' => ':attribute đã tồn tại',
             'required' => ':attribute bắt buộc phải nhập',
             'string' => ':attribute phải là kiểu chữ',
-            'max' => ':attribute quá dài',
-            'regex' => ':attribute không đúng định dạng',
-            'min' => ':attribute quá ngắn'
+            // 'regex' => ':attribute bắt đầu bằng số 0',
+            'numeric'=>':attribute phải là định dạng số',
+            'starts_with'=>':attribute bắt đầu bằng số 0',
+
+            'MaGiangVien.max'=>':attribute tối đa 20 ký tự',
+
+            'HoTen.max'=>':attribute tối đa 50 ký tự',
+
+            'Email.email'=>':attribute không đúng định dạng',
+            'Email.max'=>':attribute tối đa 50 ký tự',
+
+            'SDT.max'=>':attribute phải là 10 ký tự 2',
+            'SDT.min'=>':attribute phải là 10 ký tự 1',
+            'SDT.digits'=>':attribute phải là 10 ký tự',
+
         ];
     }
 
