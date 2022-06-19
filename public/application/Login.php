@@ -46,7 +46,7 @@ if ($taikhoan == '' || $pass == '') {
             if ($verify) {
                 // array_push($mangTaiKhoan, new TaiKhoan($row['MaGiangVien'], $row['MatKhau'], $row['Quyen'], $row['HoTen'], $row['SDT'], $row['Email']));
                 // array_push($mangTaiKhoan, ['MaGV' => $row['MaGiangVien']], ['PassWord' => $row['MatKhau']], ['Quyen' => $row['Quyen']], ['TenGV' => $row['HoTen']], ['SDT' => $row['SDT']], ['Email' => $row['Email']]);
-                array_push($mangTaiKhoan, array('MaGV' => $row['MaGiangVien'], 'PassWord' => $row['MatKhau'], 'Quyen' => $row['Quyen'], 'TenGV' => $row['HoTen'], 'SDT' => $row['SDT'], 'Email' => $row['Email']));
+                array_push($mangTaiKhoan, array('MaGV' => $row['MaGiangVien'], 'PassWord' => $pass, 'Quyen' => $row['Quyen'], 'TenGV' => $row['HoTen'], 'SDT' => $row['SDT'], 'Email' => $row['Email']));
                 $trangthai = ['StatusCode' => '200', 'Message' => 'Truy cập thành công', 'Data' => $mangTaiKhoan];
                 echo json_encode($trangthai, JSON_UNESCAPED_UNICODE);
             } else {

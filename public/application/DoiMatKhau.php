@@ -5,7 +5,7 @@
 
 
     $trangthai = array();
-    $trangthai = ['StatusCode' => '400','Message' => 'Thêm không thành công'];
+    $trangthai = ['StatusCode' => '400','Message' => 'Sửa không thành công'];
 
     if($IDTK == '' || $MatKhau == ''  )
     {
