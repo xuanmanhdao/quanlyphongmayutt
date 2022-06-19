@@ -85,13 +85,13 @@ if ($taikhoan == '') {
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
-            echo 'Message has been sent';
+            // echo 'Message has been sent';
             $trangthai = ['StatusCode' => '200', 'Message' => 'Truy cập thành công'];
             echo json_encode($trangthai);
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            // $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Thông tin tài khoản chưa có'];
-            // echo json_encode($trangthai);
+            // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Mã giảng viên không hợp lệ'];
+            echo json_encode($trangthai);
         }
 
         // $msg = "Chào bạn " . $row['HoTen'] . " chúng tôi là admin của ứng dụng Quản lý lịch đặt phòng UTT \n Tài khoản là " . $row['MaGiangVien'] . " và mật khẩu là : " . $row['MatKhau'] . "";
