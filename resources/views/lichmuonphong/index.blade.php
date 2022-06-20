@@ -1,5 +1,112 @@
 @extends('layout.master')
 @push('css')
+    {{-- Start Modal CSS --}}
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .modal-confirm {
+            color: #636363;
+            width: 400px;
+        }
+
+        .modal-confirm .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .modal-confirm .modal-header {
+            border-bottom: none;
+            position: relative;
+        }
+
+        .modal-confirm h4 {
+            text-align: center;
+            font-size: 26px;
+            margin: 30px 0 -10px;
+        }
+
+        .modal-confirm .close {
+            position: absolute;
+            top: -5px;
+            right: -2px;
+        }
+
+        .modal-confirm .modal-body {
+            color: #999;
+        }
+
+        .modal-confirm .modal-footer {
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 13px;
+            padding: 10px 15px 25px;
+        }
+
+        .modal-confirm .modal-footer a {
+            color: #999;
+        }
+
+        .modal-confirm .icon-box {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            border-radius: 50%;
+            z-index: 9;
+            text-align: center;
+            border: 3px solid #f15e5e;
+        }
+
+        .modal-confirm .icon-box i {
+            color: #f15e5e;
+            font-size: 46px;
+            display: inline-block;
+            margin-top: 13px;
+        }
+
+        .modal-confirm .btn,
+        .modal-confirm .btn:active {
+            color: #fff;
+            border-radius: 4px;
+            background: #60c7c1;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            min-width: 120px;
+            border: none;
+            min-height: 40px;
+            border-radius: 3px;
+            margin: 0 5px;
+        }
+
+        .modal-confirm .btn-secondary {
+            background: #c1c1c1;
+        }
+
+        .modal-confirm .btn-secondary:hover,
+        .modal-confirm .btn-secondary:focus {
+            background: #a8a8a8;
+        }
+
+        .modal-confirm .btn-danger {
+            background: #f15e5e;
+        }
+
+        .modal-confirm .btn-danger:hover,
+        .modal-confirm .btn-danger:focus {
+            background: #ee3535;
+        }
+
+        .trigger-btn {
+            display: inline-block;
+            margin: 100px auto;
+        }
+    </style>
+    {{-- End Modal CSS --}}
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/date-1.1.2/fc-4.1.0/fh-3.2.3/kt-2.7.0/r-2.3.0/rg-1.2.0/sc-2.0.6/sb-1.3.3/sl-1.4.0/datatables.min.css" />
 
@@ -19,8 +126,8 @@
         }
 
         /* #btnTimKiemNhieuO:hover+#TimKiemNhieuO {
-                                                    display: block;
-                                                } */
+                                                                                display: block;
+                                                                            } */
     </style>
 @endpush
 @section('contentPage')
@@ -127,8 +234,38 @@
             </thead>
         </table>
     </div>
+
+    <!-- Start Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title w-100">Xác nhận xóa?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có thực sự muốn xóa các bản ghi này không? Không thể hoàn tác quá trình này.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-lich-muon-phong" data-dismiss="modal">Xác
+                        nhận xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal HTML --}}
 @endsection
 @push('js')
+    {{-- Start Modal JS --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    {{-- End Modal JS --}}
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript"
@@ -234,7 +371,7 @@
                                 return `<form action="${data}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-delete-classroom action-icon"><i class="mdi mdi-calendar-remove text-danger"></i></button>
+                        <button type="button" class="btn btn-delete-classroom action-icon" data-toggle="modal" data-target="#myModal"><i class="mdi mdi-calendar-remove text-danger"></i></button>
                     </form>`;
                             }
                         },
@@ -242,26 +379,43 @@
                 ]
             });
 
+            // Xử lý nút xóa
+            var checkXacNhanXoaLich = true;
+            var row;
+            var form;
             $(document).on("click", ".btn-delete-classroom", function() {
-                let row = $(this).parents('tr');
-                let form = $(this).parents('form');
-                $.ajax({
-                    // Cách lấy url trong form bằng cách lọc thuộc tính action
-                    url: form.attr('action'),
-                    type: 'POST',
-                    dataType: 'json',
-                    // tất cả những gì điền trong form sẽ truyền vào data bằng hàm serialize()
-                    data: form.serialize(),
-                    success: function() {
-                        console.log("success haha");
-                        // row.remove();
-                        tableClassroom.draw();
-                    },
-                    error: function() {
-                        console.log("error rồi");
-                    }
-                })
+                if (checkXacNhanXoaLich === false) {
+                    return;
+                }
+                checkXacNhanXoaLich = false;
+                 row = $(this).parents('tr');
+                 form = $(this).parents('form');
             });
+
+            $(document).on("click", "#btn-delete-lich-muon-phong", function() {
+                console.log("Đã ấn vaafo btn-delete-lich-muon-phong");
+                checkXacNhanXoaLich = true;
+                if (checkXacNhanXoaLich === true) {
+                    $.ajax({
+                        // Cách lấy url trong form bằng cách lọc thuộc tính action
+                        url: form.attr('action'),
+                        type: 'POST',
+                        dataType: 'json',
+                        // tất cả những gì điền trong form sẽ truyền vào data bằng hàm serialize()
+                        data: form.serialize(),
+                        success: function() {
+                            console.log("success haha");
+                            // row.remove();
+                            tableClassroom.draw();
+                        },
+                        error: function() {
+                            console.log("error rồi");
+                        }
+                    });
+                }
+            });
+
+    
 
 
             /* Select2  */
