@@ -9,7 +9,9 @@
     <meta content="Coderthemes" name="author" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    {{-- <link rel="shortcut icon" href="assets/images/favicon.ico"> --}}
+    <link rel="shortcut icon" href="{{ asset('images/logo-utt-border.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-utt-border.png') }}">
 
     <!-- App css -->
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css">
