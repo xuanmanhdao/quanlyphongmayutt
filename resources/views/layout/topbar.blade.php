@@ -51,10 +51,13 @@
                       <span>Trợ giúp</span>
                   </a> --}}
 
-                  <a href="{{ route('doimatkhau') }}" class="dropdown-item notify-item">
-                      <i class="mdi mdi-lock-reset mr-1"></i>
-                      <span>Đổi mật khẩu</span>
-                  </a>
+                  @if (session()->get('MaGiangVien') !== 'superadmin')
+                      <a href="{{ route('doimatkhau') }}" class="dropdown-item notify-item">
+                          <i class="mdi mdi-lock-reset mr-1"></i>
+                          <span>Đổi mật khẩu</span>
+
+                      </a>
+                  @endif
 
                   <!-- item-->
                   <a href="{{ route('dangxuat') }}" class="dropdown-item notify-item">

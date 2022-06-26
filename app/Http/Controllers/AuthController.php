@@ -70,6 +70,11 @@ class AuthController extends Controller
 
     public function doiMatKhau()
     {
+        $maGiangVien = session()->get('MaGiangVien');
+        if($maGiangVien==="superadmin"){
+            // return redirect()->back()->withErrors(['error' => 'Tài khoản root không thể đổi mật khẩu']);
+            return redirect()->route('dangnhap')->with('error', 'Tài khoản root không thể đổi mật khẩu');
+        }
         return view('auth.doimatkhau');
     }
 

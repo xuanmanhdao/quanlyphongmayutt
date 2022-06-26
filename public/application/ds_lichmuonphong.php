@@ -9,13 +9,13 @@ if ($result->num_rows > 0)
     while ($row = mysqli_fetch_assoc($result))
     {
         $datesql = new DateTime($row['NgayMuon']);
-
+        $date = $datesql->format("j-n-Y");
         if (isdate($datesql) === true)
         {
             $sl++;
             $dataArray['ID'] = $row['id'];
             $dataArray['MaGiangVien'] = $row['MaGiangVien'];
-            $dataArray['NgayMuon'] = $row['NgayMuon'];
+            $dataArray['NgayMuon'] =$date;
             $dataArray['TietHoc'] = $row['TietHoc'];
             $dataArray['MaPhong'] = $row['MaPhong'];
             $dataArray['GhiChu'] = $row['GhiChu'];

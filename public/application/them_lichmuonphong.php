@@ -8,7 +8,8 @@ $json = json_decode($content, true);
  foreach ($json as $key => $value)
 {
     $maGv = $value["maGiangVien"];
-    $ngayMuon = $value["ngayMuon"];
+     $date = new DateTime($value["ngayMuon"]);
+    $ngayMuon =$date->format("d-m-Y");
     $tietHoc = $value["tietHoc"];
     $maPhong = $value["maPhong"];
     $ghiChu = $value["ghiChu"];
