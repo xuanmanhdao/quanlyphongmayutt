@@ -14,6 +14,16 @@
 
              <li class="side-nav-title side-nav-item">Quản trị</li>
 
+             @if (kiemTraAdmin())
+                 <li class="side-nav-item">
+                     <a href="{{ route('dashboard') }}" class="side-nav-link">
+                         <i class="mdi mdi-monitor-dashboard"></i>
+                         <span> Thống kê </span>
+                         <span class="menu-arrow"></span>
+                     </a>
+                 </li>
+             @endif
+
 
              <li class="side-nav-item">
                  <a href="{{ route('phong.index') }}" class="side-nav-link">
@@ -59,14 +69,16 @@
 
          <!-- Help Box -->
          <div class="help-box text-white text-center">
-             <a href="javascript: void(0);" class="float-right close-btn text-white">
+             {{-- <a href="javascript: void(0);" class="float-right close-btn text-white">
                  <i class="mdi mdi-close"></i>
-             </a>
+             </a> --}}
              {{-- <img src="{{ asset('images/logoFStack.jpg') }}" height="90" alt="Helper Icon Image" /> --}}
              <img src="{{ asset('images/logo-utt-border.png') }}" height="90" alt="Helper Icon Image" />
              <h5 class="mt-3">Sản phẩm đang trong quá trình phát triển</h5>
              <p class="mb-3">Có sự cố vui lòng liên hệ đội kỹ thuật</p>
              <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Liên hệ</a>
+             {{-- <a href="{{ route('errorForm') }}" class="btn btn-outline-light btn-sm">Liên hệ</a> --}}
+
          </div>
          <!-- end Help Box -->
          <!-- End Sidebar -->

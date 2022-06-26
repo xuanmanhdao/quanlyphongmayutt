@@ -126,8 +126,8 @@
         }
 
         /* #btnTimKiemNhieuO:hover+#TimKiemNhieuO {
-                                                                                display: block;
-                                                                            } */
+                                                                                    display: block;
+                                                                                } */
     </style>
 @endpush
 @section('contentPage')
@@ -217,7 +217,7 @@
     <div class="table-responsive">
         <table class="table table-bordered table-centered mb-0 mt-2" id="users-table">
             <thead>
-                <tr>
+                {{-- <tr> --}}
                 <tr>
                     <th>#</th>
                     <th>Mã giảng viên</th>
@@ -230,7 +230,7 @@
                         <th>Xóa</th>
                     @endif
                 </tr>
-                </tr>
+                {{-- </tr> --}}
             </thead>
         </table>
     </div>
@@ -388,8 +388,8 @@
                     return;
                 }
                 checkXacNhanXoaLich = false;
-                 row = $(this).parents('tr');
-                 form = $(this).parents('form');
+                row = $(this).parents('tr');
+                form = $(this).parents('form');
             });
 
             $(document).on("click", "#btn-delete-lich-muon-phong", function() {
@@ -415,7 +415,7 @@
                 }
             });
 
-    
+
 
 
             /* Select2  */

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GiangVienController;
 use App\Http\Controllers\LichMuonPhongController;
 use App\Http\Controllers\PhongController;
@@ -23,6 +24,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('', function () {
     return view('auth.dangnhap');
 });
+
+
+Route::get('/error', function () {
+    return view('layout.errorForm');
+})->name('errorForm');
 
 Route::get('dangnhap', [AuthController::class, 'dangNhap'])->name('dangnhap');
 
@@ -98,5 +104,11 @@ Route::group([
 
         // Route::delete('giangvien/{giangvien}', [GiangVienController::class, 'edit'])->name('giangvien.destroy');
         // Route::delete('lichmuonphong/{lichmuonphong}', [LichMuonPhongController::class, 'destroy'])->name('lichmuonphong.destroy');
+
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('xulytimkiemtheongay', [DashboardController::class, 'timKiemTheoNgay'])->name('xulytimkiemtheongay');
+        Route::post('thongkesolangiangvienmuon', [DashboardController::class, 'thongKeSoLanGiangVienMuon'])->name('thongkesolangiangvienmuon');
+
+
     });
 });
