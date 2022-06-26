@@ -385,14 +385,18 @@
                     },
                 });
 
-                var date = new Date();
-                var fromDate = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate() + 1).toISOString()
-                    .replace(/T.*/, '').split('-').reverse().join('-');
+                // var date = new Date();
+                // var fromDate = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate() + 1).toISOString()
+                //     .replace(/T.*/, '').split('-').reverse().join('-');
+
+                // const timeElapsed = Date.now();
+                // const toDate = new Date(timeElapsed).toISOString().replace(/T.*/, '').split('-').reverse().join(
+                //     '-');
+                // console.log(toDate);
+                var fromDate = moment().subtract(29, "days").format("DD-MM-YYYY");
                 console.log(fromDate);
 
-                const timeElapsed = Date.now();
-                const toDate = new Date(timeElapsed).toISOString().replace(/T.*/, '').split('-').reverse().join(
-                    '-');
+                var toDate = moment().format("DD-MM-YYYY");
                 console.log(toDate);
 
                 $.ajax({
