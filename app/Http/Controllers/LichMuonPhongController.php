@@ -70,6 +70,7 @@ class LichMuonPhongController extends Controller
                 "lichmuonphong.GhiChu"
             )
             ->join("giangvien", "giangvien.MaGiangVien", "=", "lichmuonphong.MaGiangVien"))
+            ->addIndexColumn()
             ->editColumn('TietHoc', function ($object) {
                 $arrTietHoc = explode(',', $object->TietHoc);
                 return LichMuonPhongTietHoc::getKeyByValue($arrTietHoc);

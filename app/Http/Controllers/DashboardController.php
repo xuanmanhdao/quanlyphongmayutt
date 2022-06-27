@@ -145,7 +145,10 @@ class DashboardController extends Controller
             ->whereBetween(DB::raw("STR_TO_DATE(NgayMuon, '%d-%m-%Y')"), [DB::raw("STR_TO_DATE('$tuNgay', '%d-%m-%Y')"), DB::raw("STR_TO_DATE('$denNgay', '%d-%m-%Y')")])
             ->groupBy('NgayMuon', 'MaGiangVien')
             ->orderBy(DB::raw("STR_TO_DATE(NgayMuon, '%d-%m-%Y')"), 'asc')
-            ->get();   
+            // ->paginate(2);
+            ->get();
+            // ->paginate(10);
+            // print $getSoLuotGiangVienMuonPhong->toSql();
         foreach ($getSoLuotGiangVienMuonPhong as $key => $val) {
             $chartDataSoLuotGiangVienMuonPhong[] = array(
                 'khoangThoiGian' => $val->NgayMuon,

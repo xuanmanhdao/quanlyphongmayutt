@@ -219,7 +219,7 @@
             <thead>
                 {{-- <tr> --}}
                 <tr>
-                    <th>#</th>
+                    <th>STT</th>
                     <th>Mã giảng viên</th>
                     <th>Tên giảng viên</th>
                     <th>Phòng</th>
@@ -331,9 +331,16 @@
                 serverSide: true,
                 ajax: '{!! route('lichmuonphong.api_index') !!}',
                 // autoWidth: false,
-                columns: [{
-                        data: 'id',
-                        name: 'id'
+                columns: [
+                    // {
+                    //     data: 'id',
+                    //     name: 'id'
+                    // },
+                    { 
+                        data: 'DT_RowIndex', 
+                        name: 'DT_RowIndex', 
+                        orderable: false, 
+                        searchable: false 
                     },
                     {
                         data: 'MaGiangVien',
