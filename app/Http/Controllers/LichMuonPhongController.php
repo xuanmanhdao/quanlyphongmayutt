@@ -46,7 +46,30 @@ class LichMuonPhongController extends Controller
 
     public function api()
     {
-        return DataTables::of(LichMuonPhong::query())
+        $queryData = DB::table('lichmuonphong')
+            ->select(
+                "lichmuonphong.id",
+                "lichmuonphong.NgayMuon",
+                "lichmuonphong.TietHoc",
+                "lichmuonphong.MaPhong",
+                "lichmuonphong.MaGiangVien",
+                "giangvien.HoTen",
+                "lichmuonphong.GhiChu"
+            )
+            ->join("giangvien", "giangvien.MaGiangVien", "=", "lichmuonphong.MaGiangVien")
+            ->get();
+        // dd($queryData);
+        return DataTables::of(DB::table('lichmuonphong')
+            ->select(
+                "lichmuonphong.id",
+                "lichmuonphong.NgayMuon",
+                "lichmuonphong.TietHoc",
+                "lichmuonphong.MaPhong",
+                "lichmuonphong.MaGiangVien",
+                "giangvien.HoTen",
+                "lichmuonphong.GhiChu"
+            )
+            ->join("giangvien", "giangvien.MaGiangVien", "=", "lichmuonphong.MaGiangVien"))
             ->editColumn('TietHoc', function ($object) {
                 $arrTietHoc = explode(',', $object->TietHoc);
                 return LichMuonPhongTietHoc::getKeyByValue($arrTietHoc);
@@ -64,14 +87,14 @@ class LichMuonPhongController extends Controller
                     $query->where('TietHoc', 'like', '%' . $keyword . '%');
                 }
             })
-            ->filterColumn('TietHoc', function ($query, $keyword) {
+            ->filterColumn('HoTen', function ($query, $keyword) {
                 if ($keyword !== '0') {
-                    $query->where('TietHoc', 'like', '%' . $keyword . '%');
+                    $query->where('giangvien.HoTen', 'like', '%' . $keyword . '%');
                 }
             })
             ->filterColumn('MaGiangVien', function ($query, $keyword) {
                 if ($keyword !== '0') {
-                    $query->where('MaGiangVien', 'like', '%' . $keyword . '%');
+                    $query->where('lichmuonphong.MaGiangVien', 'like', '%' . $keyword . '%');
                 }
             })
             ->filterColumn('NgayMuon', function ($query, $keyword) {

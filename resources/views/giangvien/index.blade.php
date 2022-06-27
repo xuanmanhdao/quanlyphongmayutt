@@ -75,8 +75,9 @@
                     // "targets": [5, 6],
                     "targets": [6],
                     // width: '20%', targets: 4
-                    "defaultContent": "-",
-                    "targets": "6"
+
+                    // "defaultContent": "-",
+                    // "targets": "6"
                 }],
                 // responsive: true,
                 processing: true,

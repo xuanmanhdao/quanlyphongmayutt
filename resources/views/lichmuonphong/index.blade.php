@@ -126,8 +126,8 @@
         }
 
         /* #btnTimKiemNhieuO:hover+#TimKiemNhieuO {
-                                                                                    display: block;
-                                                                                } */
+                                                                                        display: block;
+                                                                                    } */
     </style>
 @endpush
 @section('contentPage')
@@ -221,6 +221,7 @@
                 <tr>
                     <th>#</th>
                     <th>Mã giảng viên</th>
+                    <th>Tên giảng viên</th>
                     <th>Phòng</th>
                     <th>Ngày mượn</th>
                     <th>Tiết học</th>
@@ -294,6 +295,7 @@
 
 
             let tableClassroom = $('#users-table').DataTable({
+                order: [4, 'desc'],
                 dom: 'Blfrtip',
                 select: true,
                 buttons: [
@@ -317,10 +319,12 @@
                 columnDefs: [{
                     className: "not-export",
                     // "targets": [5, 6],
-                    "targets": [6, 7],
+                    "targets": [7, 8],
                     // width: '20%', targets: 4
-                    "defaultContent": "-",
-                    "targets": "6, 7"
+
+                    // Set default content
+                    // "defaultContent": "-",
+                    // "targets": "6, 7"
                 }],
                 // responsive: true,
                 processing: true,
@@ -334,6 +338,10 @@
                     {
                         data: 'MaGiangVien',
                         name: 'MaGiangVien'
+                    },
+                    {
+                        data: 'HoTen',
+                        name: 'HoTen'
                     },
                     {
                         data: 'MaPhong',
@@ -355,7 +363,7 @@
                     @if (kiemTraAdmin())
                         {
                             data: 'btnEdit',
-                            target: 6,
+                            target: 7,
                             orderable: false,
                             searchable: false,
                             render: function(data) {
@@ -364,7 +372,7 @@
                             }
                         }, {
                             data: 'btnDestroy',
-                            target: 7,
+                            target: 8,
                             orderable: false,
                             searchable: false,
                             render: function(data) {
@@ -418,7 +426,7 @@
 
 
 
-            /* Select2  */
+            /* Select2: Tìm kiếm nhiều ô  */
             $('#select-giang-vien-LichMuonPhong').change(function() {
                 let value = $(this).val();
                 tableClassroom.column(1).search(value).draw();
@@ -426,7 +434,7 @@
 
             $('#select-phong-LichMuonPhong').change(function() {
                 let value = $(this).val();
-                tableClassroom.column(2).search(value).draw();
+                tableClassroom.column(3).search(value).draw();
             });
 
             $('#select-ngay-muon-LichMuonPhong-1').change(function() {
@@ -438,7 +446,7 @@
                 let valueChange = reformatDateString(value);
 
                 console.log(valueChange);
-                tableClassroom.column(3).search(valueChange).draw();
+                tableClassroom.column(4).search(valueChange).draw();
 
                 function reformatDateString(s) {
                     var b = s.split("-");
@@ -453,7 +461,7 @@
                 console.log('NgaymuonPhong2: ' + span_Text);
                 var valueDaXuLy = xuLyNgayDaChon(span_Text);
 
-                tableClassroom.column(3).search(valueDaXuLy).draw();
+                tableClassroom.column(4).search(valueDaXuLy).draw();
 
                 function xuLyNgayDaChon(s) {
                     var b = s.split(" - ");
@@ -634,7 +642,7 @@
 
                 // Tìm kiếm theo tiết học cách 2: xử lý ở back end
                 let value = $(this).val();
-                tableClassroom.column(4).search(value).draw();
+                tableClassroom.column(5).search(value).draw();
             });
 
 

@@ -88,8 +88,8 @@
                     // "targets": [5, 6],
                     "targets": [5],
 
-                    "defaultContent": "-",
-                    "targets": "5"
+                    // "defaultContent": "-",
+                    // "targets": "5"
                     // width: '20%', targets: 4
                 }],
                 // responsive: true,
