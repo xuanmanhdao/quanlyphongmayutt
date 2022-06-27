@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GiangVienController;
 use App\Http\Controllers\LichMuonPhongController;
+use App\Http\Controllers\lienHeSuCoController;
 use App\Http\Controllers\PhongController;
 use App\Http\Controllers\TaiKhoanController;
 use App\Http\Middleware\KiemTraDangNhapMiddleware;
@@ -26,9 +27,7 @@ Route::get('', function () {
 });
 
 
-Route::get('/error', function () {
-    return view('layout.errorForm');
-})->name('errorForm');
+Route::get('/lienhebaocaosuco', [lienHeSuCoController::class, 'index'])->name('contact');
 
 Route::get('dangnhap', [AuthController::class, 'dangNhap'])->name('dangnhap');
 

@@ -76,8 +76,8 @@
              <img src="{{ asset('images/logo-utt-border.png') }}" height="90" alt="Helper Icon Image" />
              <h5 class="mt-3">Sản phẩm đang trong quá trình phát triển</h5>
              <p class="mb-3">Có sự cố vui lòng liên hệ đội kỹ thuật</p>
-             <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Liên hệ</a>
-             {{-- <a href="{{ route('errorForm') }}" class="btn btn-outline-light btn-sm">Liên hệ</a> --}}
+             {{-- <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Liên hệ</a> --}}
+             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">Liên hệ</a>
 
          </div>
          <!-- end Help Box -->
