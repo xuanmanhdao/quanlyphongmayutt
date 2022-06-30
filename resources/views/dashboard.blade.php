@@ -184,29 +184,6 @@
                     success: function(data) {
                         console.log(data);
 
-
-                        // Cách 4: vẽ table
-                        // var no = 1;
-                        // var $tbody = $('#thongkesolangiangvienmuon-table tbody');
-                        // $tbody.empty();
-                        // var last = "";
-                        // $.each(data, function(i, item) {
-                        //     if (last != item.khoangThoiGian) {
-                        //         var $len = data.filter(function(cur) {
-                        //             return cur == item.khoangThoiGian
-                        //         }).length;
-
-                        //         $('.td-khoangThoiGian').attr('rowspan', $len);
-                        //         last = item.khoangThoiGian;
-                        //         console.log(last, $len);
-                        //     };
-                        //     var $tr = $('<tr>').append(
-                        //         $('<td>').text(no++).addClass("td-stt"),
-                        //         $('<td>').text(item.khoangThoiGian).addClass("td-khoangThoiGian"),
-                        //         $('<td>').text(item.maGiangVien).addClass("td-maGiangVien"),
-                        //         $('<td>').text(item.soLanGiangVienMuon).addClass("td-soLanGiangVienMuon")
-                        //     ).appendTo('#thongkesolangiangvienmuon-table');
-                        // });
                         // Cách 2: vẽ table
 
                         // //Cách 1. clear table: remove all existing rows

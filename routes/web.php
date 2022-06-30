@@ -26,6 +26,8 @@ Route::get('', function () {
     return view('auth.dangnhap');
 });
 
+Route::get('lichmuonphong/api_index_test', [LichMuonPhongController::class, 'api'])->name('lichmuonphong.api_index_test');
+
 
 Route::get('/lienhebaocaosuco', [lienHeSuCoController::class, 'index'])->name('contact');
 
