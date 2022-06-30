@@ -244,7 +244,7 @@
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-secondary ti-le-item-flex" data-dismiss="modal">Hủy
                         bỏ</button>
-                    <a href="quynhanh257@gmail.com?subject=Li%C3%AAn%20h%E1%BB%87%20t%E1%BB%AB%20website%20%C4%91%C4%83ng%20k%C3%BD%20ph%C3%B2ng%20m%C3%A1y%20UTT"
+                    <a href="mailto:quynhanh257@gmail.com?subject=Li%C3%AAn%20h%E1%BB%87%20t%E1%BB%AB%20website%20%C4%91%C4%83ng%20k%C3%BD%20ph%C3%B2ng%20m%C3%A1y%20UTT"
                         target="_blank" rel="noopener noreferrer" class="btn btn-success ti-le-item-flex">Gửi
                         email</a>
                     <a href="tel:0123456789" class="btn btn-info ti-le-item-flex">Gọi điện</a>
