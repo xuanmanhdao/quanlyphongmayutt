@@ -6,6 +6,7 @@ use App\Enums\LichMuonPhongTietHoc;
 use App\Models\LichMuonPhong;
 use App\Http\Requests\StoreLichMuonPhongRequest;
 use App\Http\Requests\UpdateLichMuonPhongRequest;
+use App\Imports\LichMuonPhongImport;
 use App\Models\GiangVien;
 use App\Models\Phong;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Yajra\DataTables\DataTables;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LichMuonPhongController extends Controller
 {
@@ -46,18 +48,18 @@ class LichMuonPhongController extends Controller
 
     public function api()
     {
-        $queryData = DB::table('lichmuonphong')
-            ->select(
-                "lichmuonphong.id",
-                "lichmuonphong.NgayMuon",
-                "lichmuonphong.TietHoc",
-                "lichmuonphong.MaPhong",
-                "lichmuonphong.MaGiangVien",
-                "giangvien.HoTen",
-                "lichmuonphong.GhiChu"
-            )
-            ->join("giangvien", "giangvien.MaGiangVien", "=", "lichmuonphong.MaGiangVien")
-            ->get();
+        // $queryData = DB::table('lichmuonphong')
+        //     ->select(
+        //         "lichmuonphong.id",
+        //         "lichmuonphong.NgayMuon",
+        //         "lichmuonphong.TietHoc",
+        //         "lichmuonphong.MaPhong",
+        //         "lichmuonphong.MaGiangVien",
+        //         "giangvien.HoTen",
+        //         "lichmuonphong.GhiChu"
+        //     )
+        //     ->join("giangvien", "giangvien.MaGiangVien", "=", "lichmuonphong.MaGiangVien")
+        //     ->get();
         // dd($queryData);
         return DataTables::of(DB::table('lichmuonphong')
             ->select(
@@ -69,7 +71,9 @@ class LichMuonPhongController extends Controller
                 "giangvien.HoTen",
                 "lichmuonphong.GhiChu"
             )
-            ->join("giangvien", "giangvien.MaGiangVien", "=", "lichmuonphong.MaGiangVien"))
+            ->join("giangvien", "giangvien.MaGiangVien", "=", "lichmuonphong.MaGiangVien")
+            // ->orderBy(DB::raw("STR_TO_DATE(NgayMuon, '%d-%m-%Y')"), 'desc')
+            )
             ->addIndexColumn()
             ->editColumn('TietHoc', function ($object) {
                 $arrTietHoc = explode(',', $object->TietHoc);
@@ -108,6 +112,9 @@ class LichMuonPhongController extends Controller
                 if ($keyword !== '0') {
                     $query->where('MaPhong', 'like', '%' . $keyword . '%');
                 }
+            })
+            ->orderColumn('NgayMuon', function ($query, $order) {
+                $query->orderBy(DB::raw("STR_TO_DATE(NgayMuon, '%d-%m-%Y')"), $order);
             })
             ->make(true);
         /*
@@ -352,5 +359,22 @@ class LichMuonPhongController extends Controller
         return response()->json(null, 204);
 
         // return redirect()->route('lichmuonphong.index')->with('success', 'Đã xóa thành công');
+    }
+
+    public function importExcel(Request $request){
+
+      Excel::import(new LichMuonPhongImport, $request->file('file'));
+        // $file=$request->file('file')->store('import');
+        // $import=new LichMuonPhongImport;
+        // $import->import($file);
+        // dd($file->errors());
+        return response()->json("Thêm thành công", 201);
+    }
+
+    public function previewFileExcel(Request $request){
+        // dd($request);
+        return view('lichmuonphong.previewFileExcel', [
+            'dataFileExcel' => $request
+        ]);
     }
 }

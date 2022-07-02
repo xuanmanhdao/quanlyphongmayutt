@@ -17,8 +17,8 @@ class LichMuonPhong extends Model
     protected $fillable = [
         'NgayMuon',
         'TietHoc',
-        'MaPhong ',
-        'MaGiangVien ',
+        'MaPhong',
+        'MaGiangVien',
         'GhiChu',
         'Sync'
     ];

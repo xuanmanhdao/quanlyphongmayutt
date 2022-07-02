@@ -88,6 +88,10 @@
                     // "targets": [5, 6],
                     "targets": [5],
 
+                    @if (kiemTraAdmin()==false)
+                        "defaultContent": "-",
+                        "targets": "5"
+                    @endif
                     // "defaultContent": "-",
                     // "targets": "5"
                     // width: '20%', targets: 4
@@ -180,6 +184,14 @@
                     },
                     error: function() {
                         console.log("error rồi");
+                        $.toast({
+                            heading: 'Xóa thất bại!',
+                            text: 'Vui lòng kiểm tra lại hoặc báo cáo sự cố liên hệ đội kỹ thuật!',
+                            showHideTransition: 'slide',
+                            icon: 'error',
+                            position: 'bottom-right',
+                            hideAfter: 5000
+                        })
                     }
                 })
             });

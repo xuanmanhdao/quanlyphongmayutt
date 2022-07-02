@@ -126,8 +126,8 @@
         }
 
         /* #btnTimKiemNhieuO:hover+#TimKiemNhieuO {
-                                                                                        display: block;
-                                                                                    } */
+                                                                                                        display: block;
+                                                                                                    } */
     </style>
 @endpush
 @section('contentPage')
@@ -136,6 +136,14 @@
             <a class="btn btn-primary action-icon" href="{{ route('lichmuonphong.create') }}"><i
                     class="mdi mdi-calendar-plus text-white mr-2 mb-2"></i>Thêm lịch mượn phòng</a>
         </caption>
+        <form style="display: inline-block;">
+            <div class="form-group">
+                <label class="btn btn-primary action-icon mb-0" for="btnImportExcel"><i
+                        class="mdi mdi-file-compare text-white mr-2 mb-2"></i>Nhập file excel</label>
+                <input type="file" id="btnImportExcel" class="form-control-file d-none"
+                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+            </div>
+        </form>
     @endif
 
     <div id="btnTimKiemNhieuO" onclick="showStuff('TimKiemNhieuO');" class="float-right mb-2" tabindex="1">
@@ -225,7 +233,7 @@
                     <th>Phòng</th>
                     <th>Ngày mượn</th>
                     <th>Tiết học</th>
-                    <th>GhiChu</th>
+                    <th>Ghi chú</th>
                     @if (kiemTraAdmin())
                         <th>Sửa</th>
                         <th>Xóa</th>
@@ -252,7 +260,8 @@
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                    <button type="button" class="btn btn-danger" id="btn-delete-lich-muon-phong" data-dismiss="modal">Xác
+                    <button type="button" class="btn btn-danger" id="btn-delete-lich-muon-phong"
+                        data-dismiss="modal">Xác
                         nhận xóa</button>
                 </div>
             </div>
@@ -316,6 +325,7 @@
                     }),
                     'colvis'
                 ],
+
                 columnDefs: [{
                     className: "not-export",
                     // "targets": [5, 6],
@@ -323,8 +333,10 @@
                     // width: '20%', targets: 4
 
                     // Set default content
-                    // "defaultContent": "-",
-                    // "targets": "6, 7"
+                    @if (kiemTraAdmin()==false)
+                        "defaultContent": "-",
+                        "targets": "7, 8"
+                    @endif
                 }],
                 // responsive: true,
                 processing: true,
@@ -336,11 +348,11 @@
                     //     data: 'id',
                     //     name: 'id'
                     // },
-                    { 
-                        data: 'DT_RowIndex', 
-                        name: 'DT_RowIndex', 
-                        orderable: false, 
-                        searchable: false 
+                    {
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
                     },
                     {
                         data: 'MaGiangVien',
@@ -422,9 +434,25 @@
                             console.log("success haha");
                             // row.remove();
                             tableClassroom.draw();
+                            $.toast({
+                                heading: 'Xóa thành công',
+                                text: 'Dữ liệu của bạn đã được xóa',
+                                showHideTransition: 'slide',
+                                icon: 'success',
+                                position: 'bottom-right',
+                                hideAfter: 5000
+                            })
                         },
                         error: function() {
                             console.log("error rồi");
+                            $.toast({
+                                heading: 'Xóa thất bại!',
+                                text: 'Vui lòng thao tác lại! Có sự cố hãy liên hệ đội kỹ thuật',
+                                showHideTransition: 'slide',
+                                icon: 'error',
+                                position: 'bottom-right',
+                                hideAfter: 5000
+                            })
                         }
                     });
                 }
@@ -749,15 +777,54 @@
     <script>
         function showStuff(id) {
             document.getElementById(id).style.display = 'block';
-            // hide the lorem ipsum text
-            // document.getElementById(text).style.display = 'none';
-            // // hide the link
-            // btn.style.display = 'none';
         }
     </script>
 
     <script>
-        //    var span_Text = document.getElementById("selectedValue").innerText;
-        //     console.log('Span: '+span_Text);
+        $(document).ready(function() {
+            $("#btnImportExcel").change(function() {
+                var formData = new FormData();
+                formData.append('file', $(this)[0].files[0]);
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                });
+                $.ajax({
+                    url: '{{ route('lichmuonphong.importExcel') }}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    enctype: 'multipart/form-data',
+                    processData: false,
+                    success: function(response) {
+                        console.log(response);
+                        $.toast({
+                            heading: 'Nhập file thành công',
+                            text: 'Dữ liệu của bạn đã được nhập. Vui lòng tải lại trang!',
+                            showHideTransition: 'slide',
+                            icon: 'success',
+                            position: 'bottom-right',
+                            hideAfter: 5000
+                        })
+                    },
+                    error: function() {
+                        console.log("error rồi");
+                        $.toast({
+                            heading: 'Nhập file thất bại',
+                            text: 'Kiểm tra lại dữ liệu trong file!',
+                            showHideTransition: 'slide',
+                            icon: 'error',
+                            position: 'bottom-right',
+                            hideAfter: 5000
+                        })
+                    }
+                });
+            })
+        });
     </script>
 @endpush

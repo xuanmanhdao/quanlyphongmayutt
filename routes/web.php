@@ -101,6 +101,8 @@ Route::group([
         Route::get('lichmuonphong/create', [LichMuonPhongController::class, 'create'])->name('lichmuonphong.create');
         Route::get('lichmuonphong/{lichmuonphong}/edit', [LichMuonPhongController::class, 'edit'])->name('lichmuonphong.edit');
         Route::delete('lichmuonphong/{lichmuonphong}', [LichMuonPhongController::class, 'destroy'])->name('lichmuonphong.destroy');
+        Route::post('lichmuonphong/importexcel', [LichMuonPhongController::class, 'importExcel'])->name('lichmuonphong.importExcel');
+        Route::get('lichmuonphong/previewfileexcel', [LichMuonPhongController::class, 'previewFileExcel'])->name('lichmuonphong.previewFileExcel');
 
 
         // Route::delete('giangvien/{giangvien}', [GiangVienController::class, 'edit'])->name('giangvien.destroy');

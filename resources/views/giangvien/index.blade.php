@@ -76,6 +76,10 @@
                     "targets": [6],
                     // width: '20%', targets: 4
 
+                    @if (kiemTraAdmin()==false)
+                        "defaultContent": "-",
+                        "targets": "6"
+                    @endif
                     // "defaultContent": "-",
                     // "targets": "6"
                 }],
