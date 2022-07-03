@@ -64,7 +64,15 @@
                  </ul>
              </li>
 
-
+             @if (kiemTraAdmin())
+             <li class="side-nav-item">
+                 <a href="https://business.facebook.com/latest/inbox/all?asset_id=108431441644544&bpn_id=841572149857825&nav_ref=redirect_biz_inbox&mailbox_id=&selected_item_id=112758724785168"
+                 target="_blank" rel="noopener noreferrer" class="side-nav-link">
+                     <i class="uil-comments-alt"></i>
+                     <span> Tin nhắn </span>
+                 </a>
+             </li>
+             @endif
          </ul>
 
          <!-- Help Box -->
