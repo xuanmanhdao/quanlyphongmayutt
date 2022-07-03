@@ -345,7 +345,7 @@ class LichMuonPhongController extends Controller
         // dd($stringNgayMuon);
         $data=array(
                 'title'=>'Lịch ngày '.$request->NgayCu.' đã bị sửa',
-                'body'=>'Lý do sửa:'.$request->GhiChu.'.<br> Vui lòng làm mới dữ liệu!'
+                'body'=>'Lý do sửa:'.$request->GhiChu.'. Vui lòng làm mới dữ liệu!'
             );
         include(public_path() . '/application/notify.php');
         notify($tokenGiangVien[0], $data);
@@ -369,7 +369,7 @@ class LichMuonPhongController extends Controller
         // dd($stringNgayMuon);
         $data=array(
                 'title'=>'Lịch ngày '.$lichmuonphong->NgayMuon.' đã bị hủy',
-                'body'=>'Vui lòng làm mới dữ liệu'
+                'body'=>'Phòng: '.$lichmuonphong->MaPhong.'. Tiết: '.$lichmuonphong->TietHoc.'. Vui lòng làm mới dữ liệu'
             );
         include(public_path() . '/application/notify.php');
         notify($tokenGiangVien[0], $data);
