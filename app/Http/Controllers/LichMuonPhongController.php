@@ -369,7 +369,7 @@ class LichMuonPhongController extends Controller
         // dd($stringNgayMuon);
         $data=array(
                 'title'=>'Lịch ngày '.$lichmuonphong->NgayMuon.' đã bị hủy',
-                'body'=>'Phòng: '.$lichmuonphong->MaPhong.'. Tiết: '.$lichmuonphong->TietHoc.'. Vui lòng làm mới dữ liệu'
+                'body'=>'Phòng: '.$lichmuonphong->MaPhong.'. Tiết: '.$lichmuonphong->TietHoc.' đã bị hủy. Vui lòng làm mới dữ liệu'
             );
         include(public_path() . '/application/notify.php');
         notify($tokenGiangVien[0], $data);
