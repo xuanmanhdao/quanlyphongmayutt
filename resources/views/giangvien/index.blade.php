@@ -4,6 +4,7 @@
         href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/date-1.1.2/fc-4.1.0/fh-3.2.3/kt-2.7.0/r-2.3.0/rg-1.2.0/sc-2.0.6/sb-1.3.3/sl-1.4.0/datatables.min.css" />
 @endpush
 @section('contentPage')
+    {{-- // hàm kiemTraAdmin nằm ở helper --}}
     @if (kiemTraAdmin())
         <caption>
             <a class="btn btn-primary action-icon" href="{{ route('giangvien.create') }}"><i

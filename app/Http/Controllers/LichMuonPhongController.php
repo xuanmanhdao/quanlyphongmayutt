@@ -19,6 +19,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class LichMuonPhongController extends Controller
 {
 
+    // hàm kiemTraAdmin nằm ở helper
     public function __construct()
     {
         // $this->model=(new LichMuonPhong())->query();

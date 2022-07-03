@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// hàm kiemTraAdmin nằm ở helper
 Route::get('', function () {
     return view('auth.dangnhap');
 });

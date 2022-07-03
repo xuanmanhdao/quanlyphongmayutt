@@ -131,6 +131,7 @@
     </style>
 @endpush
 @section('contentPage')
+    {{-- // hàm kiemTraAdmin nằm ở helper --}}
     @if (kiemTraAdmin())
         <caption>
             <a class="btn btn-primary action-icon" href="{{ route('lichmuonphong.create') }}"><i
