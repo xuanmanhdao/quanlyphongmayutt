@@ -1,8 +1,9 @@
 <?php
-$rdir = str_replace("\\", "/", __DIR__); 
-require $rdir.'/PHPMailer-master/src/Exception.php';
-require $rdir.'/PHPMailer-master/src/PHPMailer.php';
-require $rdir.'/PHPMailer-master/src/SMTP.php';
+$rdir = str_replace("\\", "/", __DIR__);
+require $rdir . '/PHPMailer-master/src/Exception.php';
+require $rdir . '/PHPMailer-master/src/PHPMailer.php';
+require $rdir . '/PHPMailer-master/src/SMTP.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -12,9 +13,9 @@ $mangTaiKhoan = array();
 $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '400', 'Message' => 'Thông tin tài khoản không đúng'];
 include 'connect.php';
 // $taikhoan = $_POST['taikhoan'] ?? '';
-$email=base64_decode($_GET['email']);
-$maGiangVien=base64_decode($_GET['magiangvien']);
-$token=$_GET['token'];
+$email = base64_decode($_GET['email']);
+$maGiangVien = base64_decode($_GET['magiangvien']);
+$token = $_GET['token'];
 // echo json_encode( ['email' => $email, 'maGiangVien' => $maGiangVien, 'token' => $token]);
 // die();
 //$taikhoan = 'MAGH01';
@@ -22,18 +23,32 @@ $token=$_GET['token'];
 // $taikhoan = strip_tags($taikhoan);
 // $taikhoan = addslashes($taikhoan);
 
-if ($maGiangVien == '' || $email=='') {
+if ($maGiangVien == '' || $email == '') {
     $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Thông tin tài khoản chưa có'];
     echo json_encode($trangthai);
 } else {
-    $hash = password_hash('123456', PASSWORD_BCRYPT);
-    $queryUpdate = "UPDATE `taikhoan` SET `MatKhau`='". $hash."' WHERE MaGiangVien = '". $maGiangVien ."'";  
-    $result = mysqli_query($conn, $queryUpdate);
-
-    $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email FROM giangvien gv ,taikhoan tk WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "'";
-    $result = mysqli_query($conn, $sql);
-    $each = mysqli_num_rows($result);
+    // $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email FROM giangvien gv ,taikhoan tk WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "'";
+    if ($token !== null) {
+        $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
+        FROM giangvien gv ,taikhoan tk 
+        WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
+        and gv.Email = '" . $email . "'
+        and tk.Token = '" . $token . "'";
+        $result = mysqli_query($conn, $sql);
+        $each = mysqli_num_rows($result);
+    } else {
+        $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
+        FROM giangvien gv ,taikhoan tk 
+        WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
+        and gv.Email = '" . $email . "'
+        and tk.Token is null";
+        $result = mysqli_query($conn, $sql);
+        $each = mysqli_num_rows($result);
+    }
     if ($each > 0) {
+        $hash = password_hash('123456', PASSWORD_BCRYPT);
+        $queryUpdate = "UPDATE `taikhoan` SET `MatKhau`='" . $hash . "' WHERE MaGiangVien = '" . $maGiangVien . "'";
+        $resultUpdate = mysqli_query($conn, $queryUpdate);
         $row = mysqli_fetch_assoc($result);
         $Email  = $row['Email'];
         class TaiKhoan
@@ -100,7 +115,6 @@ if ($maGiangVien == '' || $email=='') {
             $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Mã giảng viên không hợp lệ'];
             echo json_encode($trangthai);
         }
-
     } else {
         $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Thông tin tài khoản chưa có'];
         echo json_encode($trangthai);

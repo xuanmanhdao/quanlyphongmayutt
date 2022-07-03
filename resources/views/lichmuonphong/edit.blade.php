@@ -17,9 +17,9 @@
             <label for="select-ngay-muon-LichMuonPhong">Chọn ngày</label>
             <span class="ml-4">&ensp;Ngày cũ: {{ $each->getNgayMuonFormatView() }}</span>
             <input type="hidden" name="NgayCu" id="" value="{{ $each->getNgayMuonFormatView() }}">
-            <input class="form-control" id="select-ngay-muon-LichMuonPhong" type="date" name="NgayMuon"
-                value="{{ $each->getNgayMuonFormated() }}">
-            {{-- <input class="form-control" id="select-ngay-muon-LichMuonPhong" type="date" name="NgayMuon"> --}}
+            {{-- <input class="form-control" id="select-ngay-muon-LichMuonPhong" type="date" name="NgayMuon"
+                value="{{ $each->getNgayMuonFormated() }}"> --}}
+            <input class="form-control" id="select-ngay-muon-LichMuonPhong" type="date" name="NgayMuon">
             @if ($errors->has('NgayMuon'))
                 <div class="alert alert-danger">
                     {{ $errors->first('NgayMuon') }}
@@ -32,11 +32,17 @@
             <span class="ml-4">Tiết học cũ: {{ $each->TietHoc }}</span>
             <br>
             @foreach ($arrLichMuonPhongSoTiet as $keyLichMuonPhongSoTiet => $valueLichMuonPhongSoTiet)
-                <div class="custom-control custom-checkbox custom-control-inline">
+                {{-- <div class="custom-control custom-checkbox custom-control-inline">
                     <input type="checkbox" name='TietHoc[]' class="custom-control-input btn btn-warning tiet-hoc"
                         id="customCheck{{ $valueLichMuonPhongSoTiet }}" value="{{ $valueLichMuonPhongSoTiet }}"
                         @foreach ($each->getTietHocFormated() as $keyTietHoc => $valueTietHoc)
                             {{ $valueTietHoc == $valueLichMuonPhongSoTiet ? 'checked' : '' }} @endforeach>
+                    <label class="custom-control-label"
+                        for="customCheck{{ $valueLichMuonPhongSoTiet }}">{{ $keyLichMuonPhongSoTiet }}</label>
+                </div> --}}
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" name='TietHoc[]' class="custom-control-input btn btn-warning tiet-hoc"
+                        id="customCheck{{ $valueLichMuonPhongSoTiet }}" value="{{ $valueLichMuonPhongSoTiet }}">
                     <label class="custom-control-label"
                         for="customCheck{{ $valueLichMuonPhongSoTiet }}">{{ $keyLichMuonPhongSoTiet }}</label>
                 </div>
@@ -61,8 +67,8 @@
             <label for="MaPhong">Chọn phòng</label>
             <span class="ml-4">Mã phòng cũ: {{ $each->MaPhong }}</span>
             <select name="MaPhong" class="custom-select mb-3" id="MaPhong">
-                {{-- <option selected disabled>Danh sách phòng</option> --}}
-                <option selected value="{{ $each->MaPhong }}">{{ $each->MaPhong }}</option>
+                <option selected disabled>Danh sách phòng</option>
+                {{-- <option selected value="{{ $each->MaPhong }}">{{ $each->MaPhong }}</option> --}}
             </select>
             @if ($errors->has('MaPhong'))
                 <div class="alert alert-danger">
