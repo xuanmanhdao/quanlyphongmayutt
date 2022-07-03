@@ -38,6 +38,7 @@ class StoreGiangVienRequest extends FormRequest
             'Email' => [
                 'bail',
                 'required',
+                'unique:giangvien',
                 'email:rfc,dns',
                 'max:50',
 
@@ -46,6 +47,7 @@ class StoreGiangVienRequest extends FormRequest
                 'bail',
                 'required',
                 'numeric',
+                'unique:giangvien',
                 'starts_with:0',
                 // 'min:10',
                 // 'max:10',
