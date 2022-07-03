@@ -345,7 +345,7 @@ class LichMuonPhongController extends Controller
         // dd($stringNgayMuon);
         $data=array(
                 'title'=>'Lịch ngày '.$request->NgayCu.' đã bị sửa',
-                'body'=>'Lý do sửa:'.$request->GhiChu.'. Vui lòng làm mới dữ liệu!'
+                'body'=>'Lý do sửa:'.$request->GhiChu.'.\n Vui lòng làm mới dữ liệu!'
             );
         include(public_path() . '/application/notify.php');
         notify($tokenGiangVien[0], $data);
