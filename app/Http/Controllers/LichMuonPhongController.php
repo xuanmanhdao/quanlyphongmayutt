@@ -345,7 +345,7 @@ class LichMuonPhongController extends Controller
         // dd($stringNgayMuon);
         $data=array(
                 'title'=>'Lịch ngày '.$request->NgayCu.' đã bị sửa',
-                'body'=>'Vui lòng làm mới dữ liệu'
+                'body'=>'Lý do sửa:'.$request->GhiChu.'. Vui lòng làm mới dữ liệu!'
             );
         include(public_path() . '/application/notify.php');
         notify($tokenGiangVien[0], $data);
@@ -361,6 +361,18 @@ class LichMuonPhongController extends Controller
     public function destroy(LichMuonPhong $lichmuonphong)
     {
         // dd($lichmuonphong->delete());
+        $tokenGiangVien=DB::table("taikhoan")
+        // ->select('Token')
+        ->where('MaGiangVien','=',$lichmuonphong->MaGiangVien)
+        ->get()
+        ->pluck('Token');
+        // dd($stringNgayMuon);
+        $data=array(
+                'title'=>'Lịch ngày '.$lichmuonphong->NgayMuon.' đã bị hủy',
+                'body'=>'Vui lòng làm mới dữ liệu'
+            );
+        include(public_path() . '/application/notify.php');
+        notify($tokenGiangVien[0], $data);
         $lichmuonphong->delete();
 
         // trả về json
