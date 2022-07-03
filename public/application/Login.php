@@ -9,9 +9,11 @@ $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '400', 'Message' => '
 
 $taikhoan = $_POST['taikhoan'] ?? '';
 $pass = $_POST['pass'] ?? '';
+ $token = $_POST['token'] ?? '';
 
-// $taikhoan = 'GV01';
-// $pass = '1';
+    // $taikhoan = 'GV01';
+    // $pass = '1';
+
 
 $taikhoan = strip_tags($taikhoan);
 $taikhoan = addslashes($taikhoan);
@@ -46,9 +48,12 @@ if ($taikhoan == '' || $pass == '') {
             if ($verify) {
                 // array_push($mangTaiKhoan, new TaiKhoan($row['MaGiangVien'], $row['MatKhau'], $row['Quyen'], $row['HoTen'], $row['SDT'], $row['Email']));
                 // array_push($mangTaiKhoan, ['MaGV' => $row['MaGiangVien']], ['PassWord' => $row['MatKhau']], ['Quyen' => $row['Quyen']], ['TenGV' => $row['HoTen']], ['SDT' => $row['SDT']], ['Email' => $row['Email']]);
-                array_push($mangTaiKhoan, array('MaGV' => $row['MaGiangVien'], 'PassWord' => $pass, 'Quyen' => $row['Quyen'], 'TenGV' => $row['HoTen'], 'SDT' => $row['SDT'], 'Email' => $row['Email']));
+			$sql_token="UPDATE taikhoan SET Token= '".$token."' where MaGiangVien = '".$taikhoan."'";
+			 $result = mysqli_query($conn, $sql_token);
+			 array_push($mangTaiKhoan, array('MaGV' => $row['MaGiangVien'], 'PassWord' => $pass, 'Quyen' => $row['Quyen'], 'TenGV' => $row['HoTen'], 'SDT' => $row['SDT'], 'Email' => $row['Email']));
                 $trangthai = ['StatusCode' => '200', 'Message' => 'Truy cập thành công', 'Data' => $mangTaiKhoan];
                 echo json_encode($trangthai, JSON_UNESCAPED_UNICODE);
+			
             } else {
                 $trangthai = ['TaiKhoan' => $mangTaiKhoan, 'StatusCode' => '401', 'Message' => 'Thông tin tài khoản sai'];
                 echo json_encode($trangthai, JSON_UNESCAPED_UNICODE);

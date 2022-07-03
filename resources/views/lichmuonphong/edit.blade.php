@@ -16,6 +16,7 @@
         <div class="form-group">
             <label for="select-ngay-muon-LichMuonPhong">Chọn ngày</label>
             <span class="ml-4">&ensp;Ngày cũ: {{ $each->getNgayMuonFormatView() }}</span>
+            <input type="hidden" name="NgayCu" id="" value="{{ $each->getNgayMuonFormatView() }}">
             <input class="form-control" id="select-ngay-muon-LichMuonPhong" type="date" name="NgayMuon"
                 value="{{ $each->getNgayMuonFormated() }}">
             {{-- <input class="form-control" id="select-ngay-muon-LichMuonPhong" type="date" name="NgayMuon"> --}}

@@ -336,6 +336,19 @@ class LichMuonPhongController extends Controller
         $lichmuonphong->setGhiChu($request->GhiChu);
         // dd(response()->json([$request]));
         $lichmuonphong->save();
+
+        $tokenGiangVien=DB::table("taikhoan")
+        // ->select('Token')
+        ->where('MaGiangVien','=',$request->MaGiangVien)
+        ->get()
+        ->pluck('Token');
+        // dd($stringNgayMuon);
+        $data=array(
+                'title'=>'Lịch ngày '.$request->NgayCu.' đã bị sửa',
+                'body'=>'Vui lòng làm mới dữ liệu'
+            );
+        include(public_path() . '/application/notify.php');
+        notify($tokenGiangVien[0], $data);
         return redirect()->route('lichmuonphong.index')->with('success', 'Đã sửa thành công');
     }
 
