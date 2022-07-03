@@ -49,8 +49,7 @@ if ($maGiangVien == '' || $email == '') {
     $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
             FROM giangvien gv ,taikhoan tk 
             WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
-            and gv.Email = '" . $email . "'
-            and tk.Token = '" . $token . "'";
+            and gv.Email = '" . $email . "'";
     $result = mysqli_query($conn, $sql);
     $each = mysqli_num_rows($result);
     if ($each > 0) {
