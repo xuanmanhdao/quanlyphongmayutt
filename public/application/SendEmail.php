@@ -28,23 +28,31 @@ if ($maGiangVien == '' || $email == '') {
     echo json_encode($trangthai);
 } else {
     // $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email FROM giangvien gv ,taikhoan tk WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "'";
-    if ($token !== null) {
-        $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
-        FROM giangvien gv ,taikhoan tk 
-        WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
-        and gv.Email = '" . $email . "'
-        and tk.Token = '" . $token . "'";
-        $result = mysqli_query($conn, $sql);
-        $each = mysqli_num_rows($result);
-    } else {
-        $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
-        FROM giangvien gv ,taikhoan tk 
-        WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
-        and gv.Email = '" . $email . "'
-        and tk.Token is null";
-        $result = mysqli_query($conn, $sql);
-        $each = mysqli_num_rows($result);
-    }
+    
+    // if ($token !== null) {
+    //     $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
+    //     FROM giangvien gv ,taikhoan tk 
+    //     WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
+    //     and gv.Email = '" . $email . "'
+    //     and tk.Token = '" . $token . "'";
+    //     $result = mysqli_query($conn, $sql);
+    //     $each = mysqli_num_rows($result);
+    // } else {
+    //     $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
+    //     FROM giangvien gv ,taikhoan tk 
+    //     WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
+    //     and gv.Email = '" . $email . "'
+    //     and tk.Token is null";
+    //     $result = mysqli_query($conn, $sql);
+    //     $each = mysqli_num_rows($result);
+    // }
+    $sql = "SELECT gv.MaGiangVien , gv.HoTen , tk.MatKhau,gv.Email 
+            FROM giangvien gv ,taikhoan tk 
+            WHERE tk.MaGiangVien = gv.MaGiangVien and tk.MaGiangVien = '" . $maGiangVien . "' 
+            and gv.Email = '" . $email . "'
+            and tk.Token = '" . $token . "'";
+    $result = mysqli_query($conn, $sql);
+    $each = mysqli_num_rows($result);
     if ($each > 0) {
         $hash = password_hash('123456', PASSWORD_BCRYPT);
         $queryUpdate = "UPDATE `taikhoan` SET `MatKhau`='" . $hash . "' WHERE MaGiangVien = '" . $maGiangVien . "'";
