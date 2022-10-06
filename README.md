@@ -1,10 +1,10 @@
-<style>
-    ul{
-    list-style: none;
-    }
-</style>
 <h4>Link demo: http://quanlyphongmayutt.herokuapp.com/</h4>
-<ul>
+<ul xmlns="http://www.w3.org/1999/xhtml">
+    <style>
+        ul{
+        list-style: none;
+        }
+    </style>
     <li> 
         <div>
             <details>
