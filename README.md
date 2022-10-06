@@ -1,5 +1,10 @@
+<style>
+    ul{
+    list-style: none;
+    }
+</style>
 <h4>Link demo: http://quanlyphongmayutt.herokuapp.com/</h4>
-<ul style="list-style: none;">
+<ul>
     <li> 
         <div>
             <details>
