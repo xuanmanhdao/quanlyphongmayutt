@@ -11,11 +11,8 @@
      <li> 
         <details>
             <summary> Tài khoản quyền giảng viên:</summary>
-           <p>username: gv03</p>
+            <p>username: gv03</p>
             <p>password: 123456</p>
          </details>
     </li>
-   
-
-
 </ul>
