@@ -4,7 +4,7 @@
         <div>
             <details>
                 <summary>Tài khoản quyền admin:</summary>
-                <p>username: superadmin</p>
+                <p style="margin-top: 20px;">username: superadmin</p>
                 <p>password: 1234567</p>
              </details>
         </div>
