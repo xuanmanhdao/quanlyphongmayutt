@@ -1,5 +1,5 @@
 <h4>Link demo: http://quanlyphongmayutt.herokuapp.com/</h4>
-<ul>
+<ul style="list-style: none;">
     <li> 
         <div>
             <details>
