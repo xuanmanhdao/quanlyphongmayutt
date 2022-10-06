@@ -2,8 +2,8 @@
     <foreignObject width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml">
                 <h4>Link demo: http://quanlyphongmayutt.herokuapp.com/</h4>
-                <ul list-style="none">
-                    <li> 
+<!--                 <ul list-style="none">
+                    <li>  -->
                         <div>
                             <details>
                                 <summary>Tài khoản quyền admin:</summary>
@@ -11,8 +11,8 @@
                                 <p>password: 1234567</p>
                              </details>
                         </div>
-                    </li>
-                     <li>
+<!--                     </li>
+                     <li> -->
                          <div>
                             <details>
                                 <summary> Tài khoản quyền giảng viên:</summary>
@@ -20,8 +20,8 @@
                                 <p>password: 123456</p>
                              </details>
                           </div>
-                    </li>
-                </ul>
+<!--                     </li>
+                </ul> -->
         </div>
     </foreignObject>
 </svg>
