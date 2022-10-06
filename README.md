@@ -2,7 +2,7 @@
     <foreignObject width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml">
                 <h4>Link demo: http://quanlyphongmayutt.herokuapp.com/</h4>
-                <ul list-style="none" xmlns="http://www.w3.org/1999/xhtml">
+                <ul list-style="none">
                     <li> 
                         <div>
                             <details>
