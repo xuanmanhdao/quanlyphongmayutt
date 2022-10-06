@@ -1,12 +1,11 @@
 <h4>Link demo: http://quanlyphongmayutt.herokuapp.com/</h4>
 <ul>
 <li>Tài khoản quyền admin:
-        username: superadmin
-        password: 1234567
+    <p>username: superadmin</p>
+        <p>password: 1234567</p>
 </li>
-    <li>
-Tài khoản quyền giảng viên:
-        username: gv03
-        password: 123456
+    <li>Tài khoản quyền giảng viên:
+       <p> username: gv03</p>
+      <p>  password: 123456</p>
         </li>
 </ul>
